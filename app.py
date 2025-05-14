@@ -5,8 +5,12 @@ app = Flask(__name__)
 def Determinant(num11, num12, num21, num22):
     return num11 * num22 - num12 * num21
 
+@app.route('/', methods=['GET'])
+def getIndex():
+    return render_template('index.html', result=None)
+
 @app.route('/', methods=['POST'])
-def index():
+def postIndex():
     result = None
     try:
         result = Determinant(float(request.form['num11']), float(request.form['num12']), float(request.form['num21']), float(request.form['num22']))
